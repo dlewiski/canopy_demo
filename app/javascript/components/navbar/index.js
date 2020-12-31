@@ -27,7 +27,7 @@ const Navbar = () => {
          <IconButton edge="start" aria-label="menu">
            <MenuIcon fontSize="large" />
          </IconButton>
-         <Typography variant="h5">Canopy</Typography>
+         <Typography variant="h4">Canopy</Typography>
        </Toolbar>
      </AppBar>
    </ElevationScroll>
