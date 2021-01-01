@@ -1,7 +1,15 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import { AppBar, Toolbar, IconButton, Typography, useScrollTrigger } from '@material-ui/core';
-import MenuIcon from "@material-ui/icons/Menu";
+import PropTypes from 'prop-types';
+import { useTheme } from '@material-ui/core/styles';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  useScrollTrigger,
+} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import NavTabs from './nav-tabs';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -20,18 +28,34 @@ ElevationScroll.propTypes = {
 };
 
 const Navbar = () => {
- return (
-   <ElevationScroll>
-     <AppBar position="fixed">
-       <Toolbar>
-         <IconButton edge="start" aria-label="menu">
-           <MenuIcon fontSize="large" />
-         </IconButton>
-         <Typography variant="h4">Canopy</Typography>
-       </Toolbar>
-     </AppBar>
-   </ElevationScroll>
- );
+  const theme = useTheme();
+
+  return (
+    <ElevationScroll>
+      <AppBar
+        position="fixed"
+        style={{ height: '100px', flexDirection: 'row' }}
+      >
+        <Toolbar disableGutters={true} style={{ width: '100%' }}>
+          <IconButton
+            aria-label="menu"
+            style={{
+              backgroundColor: '#000051',
+              color: theme.palette.primary.contrastText,
+              borderRadius: 0,
+              height: '100px',
+              width: '100px',
+              marginRight: '40px',
+            }}
+          >
+            <MenuIcon style={{ fontSize: 80 }} />
+          </IconButton>
+          <NavTabs />
+          <AccountBoxIcon style={{ fontSize: 80, marginRight: '30px' }} />
+        </Toolbar>
+      </AppBar>
+    </ElevationScroll>
+  );
 };
 
 export default Navbar;
