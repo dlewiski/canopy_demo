@@ -6,6 +6,8 @@ import theme from './Theme';
 import Navbar from './navbar';
 import Homepage from './pages/homepage';
 import ProductsPage from './pages/products-page';
+import AccountPage from './pages/account-page';
+import MyPortfolioPage from './pages/my-portfolio-page';
 
 const App = () => (
   <React.Fragment>
@@ -16,6 +18,8 @@ const App = () => (
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route exact path="/products" component={ProductsPage} />
+          <Route exact path="/account" component={AccountPage} />
+          <Route exact path="/my-portfolio" component={MyPortfolioPage} />
           <Route path="*">
             <Redirect
               to={{
