@@ -11,7 +11,9 @@ import {
   Typography,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { withStyles } from '@material-ui/styles';
 import NavTabs from './nav-tabs';
+import styles from './styles';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -29,7 +31,8 @@ ElevationScroll.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { classes } = props;
   const theme = useTheme();
   return (
     <ElevationScroll>
@@ -37,7 +40,10 @@ const Navbar = () => {
         position="fixed"
         style={{ height: '100px', flexDirection: 'row' }}
       >
-        <Toolbar disableGutters={false} style={{ width: '100%' }}>
+        <Toolbar
+          disableGutters={false}
+          style={{ width: '100%', backgroundColor: '#fff' }}
+        >
           <IconButton
             aria-label="menu"
             style={{
@@ -52,16 +58,15 @@ const Navbar = () => {
           >
             <MenuIcon style={{ fontSize: 40 }} />
           </IconButton>
-          <Link component={NavLink} to="/">
-            <Typography
-              variant="h6"
-              color="textPrimary"
-              style={{
-                whiteSpace: 'nowrap',
-                color: theme.palette.primary.contrastText,
-                fontFamily: theme.typography.fontFamily,
-              }}
-            >
+          <Link
+            component={NavLink}
+            exact
+            to="/"
+            underline="none"
+            className={classes.navLink}
+            activeClassName={classes.activeTab}
+          >
+            <Typography variant="h6" className={classes.homeNavText}>
               Canopy Investments
             </Typography>
           </Link>
@@ -72,4 +77,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default withStyles(styles)(Navbar);

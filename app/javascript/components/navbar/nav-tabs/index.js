@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useTheme } from '@material-ui/core/styles';
 import { Grid, Link, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
+import styles from './styles';
 
-const NavTabs = () => {
-  const theme = useTheme();
+const NavTabs = (props) => {
+  const { classes } = props;
   const tabs = [
     { name: 'Products', path: '/products' },
     { name: 'My Portfolio', path: '/my-portfolio' },
@@ -13,13 +14,14 @@ const NavTabs = () => {
 
   const renderNavTab = (tabInfo, index) => (
     <Grid key={index} style={{ padding: '0 20px' }}>
-      <Link component={NavLink} to={tabInfo.path} underline="none">
-        <Typography
-          variant="h6"
-          style={{
-            color: theme.palette.primary.contrastText,
-          }}
-        >
+      <Link
+        component={NavLink}
+        to={tabInfo.path}
+        underline="none"
+        className={classes.navLink}
+        activeClassName={classes.activeTab}
+      >
+        <Typography variant="h6" className={classes.tabText}>
           {tabInfo.name}
         </Typography>
       </Link>
@@ -27,18 +29,10 @@ const NavTabs = () => {
   );
 
   return (
-    <Grid
-      style={{
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-      }}
-    >
+    <Grid className={classes.navTabRoot}>
       {tabs.map((tab, index) => renderNavTab(tab, index))}
     </Grid>
   );
 };
 
-export default NavTabs;
+export default withStyles(styles)(NavTabs);
