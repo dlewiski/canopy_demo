@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import { useTheme } from '@material-ui/core/styles';
 import {
   AppBar,
   Toolbar,
   IconButton,
   useScrollTrigger,
+  Link,
+  Typography,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import NavTabs from './nav-tabs';
 
 function ElevationScroll(props) {
@@ -29,29 +31,41 @@ ElevationScroll.propTypes = {
 
 const Navbar = () => {
   const theme = useTheme();
-
   return (
     <ElevationScroll>
       <AppBar
         position="fixed"
         style={{ height: '100px', flexDirection: 'row' }}
       >
-        <Toolbar disableGutters={true} style={{ width: '100%' }}>
+        <Toolbar disableGutters={false} style={{ width: '100%' }}>
           <IconButton
             aria-label="menu"
             style={{
-              backgroundColor: '#000051',
+              // backgroundColor: '#000051',
               color: theme.palette.primary.contrastText,
-              borderRadius: 0,
-              height: '100px',
-              width: '100px',
-              marginRight: '40px',
+              padding: '5px',
+              // borderRadius: 0,
+              // height: '100px',
+              // width: '100px',
+              // marginRight: '40px',
             }}
           >
-            <MenuIcon style={{ fontSize: 80 }} />
+            <MenuIcon style={{ fontSize: 40 }} />
           </IconButton>
+          <Link component={NavLink} to="/">
+            <Typography
+              variant="h6"
+              color="textPrimary"
+              style={{
+                whiteSpace: 'nowrap',
+                color: theme.palette.primary.contrastText,
+                fontFamily: theme.typography.fontFamily,
+              }}
+            >
+              Canopy Investments
+            </Typography>
+          </Link>
           <NavTabs />
-          <AccountBoxIcon style={{ fontSize: 80, marginRight: '30px' }} />
         </Toolbar>
       </AppBar>
     </ElevationScroll>

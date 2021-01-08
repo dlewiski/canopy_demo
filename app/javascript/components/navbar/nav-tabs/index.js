@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useTheme } from '@material-ui/core/styles';
 import { Grid, Link, Typography } from '@material-ui/core';
 
 const NavTabs = () => {
   const theme = useTheme();
   const tabs = [
-    { name: 'Home', path: '/' },
     { name: 'Products', path: '/products' },
     { name: 'My Portfolio', path: '/my-portfolio' },
     { name: 'Account', path: '/account' },
@@ -14,9 +13,9 @@ const NavTabs = () => {
 
   const renderNavTab = (tabInfo, index) => (
     <Grid key={index} style={{ padding: '0 20px' }}>
-      <Link component={RouterLink} to={tabInfo.path}>
+      <Link component={NavLink} to={tabInfo.path} underline="none">
         <Typography
-          variant="h4"
+          variant="h6"
           style={{
             color: theme.palette.primary.contrastText,
           }}
@@ -34,6 +33,7 @@ const NavTabs = () => {
         height: '100%',
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'flex-end',
       }}
     >
       {tabs.map((tab, index) => renderNavTab(tab, index))}

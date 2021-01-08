@@ -1,14 +1,23 @@
-import { createMuiTheme } from "@material-ui/core/styles";
-import green from "@material-ui/core/colors/green";
-import blue from "@material-ui/core/colors/blue";
+import { createMuiTheme } from '@material-ui/core/styles';
 
 export default createMuiTheme({
   palette: {
     primary: {
-      main: green[600],
+      main: '#33b085',
     },
-    secondary: {
-      main: blue[500],
+    green: {
+      light: '#e3f5ea',
+      medium: '#6fca96',
+      dark: '#006f62',
+    },
+    text: {
+      primary: '#002f6c',
+    },
+  },
+  typography: {
+    fontFamily: 'Encode Sans',
+    h6: {
+      fontWeight: 400,
     },
   },
 });
