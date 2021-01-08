@@ -11,6 +11,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import canopyTrees from '../../images/canopy-trees.svg'
 import { withStyles } from '@material-ui/styles';
 import NavTabs from './nav-tabs';
 import styles from './styles';
@@ -44,20 +45,10 @@ const Navbar = (props) => {
           disableGutters={false}
           style={{ width: '100%', backgroundColor: '#fff' }}
         >
-          <IconButton
-            aria-label="menu"
-            style={{
-              // backgroundColor: '#000051',
-              color: theme.palette.primary.contrastText,
-              padding: '5px',
-              // borderRadius: 0,
-              // height: '100px',
-              // width: '100px',
-              // marginRight: '40px',
-            }}
-          >
-            <MenuIcon style={{ fontSize: 40 }} />
-          </IconButton>
+          <img
+            src={canopyTrees}
+            style={{ height: '60px', margin: '0 18px 0 16px' }}
+          />
           <Link
             component={NavLink}
             exact
