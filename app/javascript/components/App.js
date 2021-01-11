@@ -16,7 +16,14 @@ const App = () => (
     <ThemeProvider theme={theme}>
       <Grid style={{ display: 'flex', flexDirection: 'column' }}>
         <Navbar />
-        <Grid style={{ marginTop: '100px', display: 'flex' }}>
+        <Grid
+          style={{
+            minHeight: '65vh',
+            marginTop: '100px',
+            display: 'flex',
+            padding: '0 30px',
+          }}
+        >
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route exact path="/products" component={ProductsPage} />

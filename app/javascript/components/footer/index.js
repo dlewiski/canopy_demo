@@ -1,6 +1,14 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Grid, List, ListItem, Link, Typography } from '@material-ui/core';
+// import { NavLink } from 'react-router-dom';
+import {
+  Grid,
+  List,
+  ListItem,
+  ListItemIcon,
+  // Link,
+  Typography,
+} from '@material-ui/core';
+import StopIcon from '@material-ui/icons/Stop';
 import { withStyles } from '@material-ui/styles';
 import styles from './styles';
 
@@ -18,10 +26,20 @@ const Footer = (props) => {
 
   const footerColumn = (footerContent) => (
     <Grid key={footerContent.title}>
-      <Typography variant="h5">{footerContent.title}</Typography>
+      <Typography variant="h5" className={classes.listTitle}>
+        {footerContent.title}
+      </Typography>
       <List>
         {footerContent.listItems.map((listItem, index) => (
-          <ListItem key={index}>{listItem}</ListItem>
+          <ListItem key={index} className={classes.text}>
+            <ListItemIcon
+              className={classes.text}
+              classes={{ root: classes.iconRoot }}
+            >
+              <StopIcon fontSize="small" />
+            </ListItemIcon>
+            {listItem}
+          </ListItem>
         ))}
       </List>
     </Grid>
