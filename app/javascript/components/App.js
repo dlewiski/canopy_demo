@@ -8,26 +8,30 @@ import Homepage from './pages/homepage';
 import ProductsPage from './pages/products-page';
 import AccountPage from './pages/account-page';
 import MyPortfolioPage from './pages/my-portfolio-page';
+import Footer from './footer';
 
 const App = () => (
   <React.Fragment>
     <CssBaseline />
     <ThemeProvider theme={theme}>
-      <Navbar />
-      <Grid style={{ marginTop: '100px' }}>
-        <Switch>
-          <Route exact path="/" component={Homepage} />
-          <Route exact path="/products" component={ProductsPage} />
-          <Route exact path="/account" component={AccountPage} />
-          <Route exact path="/my-portfolio" component={MyPortfolioPage} />
-          <Route path="*">
-            <Redirect
-              to={{
-                pathname: '/',
-              }}
-            />
-          </Route>{' '}
-        </Switch>
+      <Grid style={{ display: 'flex', flexDirection: 'column' }}>
+        <Navbar />
+        <Grid style={{ marginTop: '100px', display: 'flex' }}>
+          <Switch>
+            <Route exact path="/" component={Homepage} />
+            <Route exact path="/products" component={ProductsPage} />
+            <Route exact path="/account" component={AccountPage} />
+            <Route exact path="/my-portfolio" component={MyPortfolioPage} />
+            <Route path="*">
+              <Redirect
+                to={{
+                  pathname: '/',
+                }}
+              />
+            </Route>{' '}
+          </Switch>
+        </Grid>
+        <Footer />
       </Grid>
     </ThemeProvider>
   </React.Fragment>

@@ -1,18 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { useTheme } from '@material-ui/core/styles';
 import {
   AppBar,
   Toolbar,
-  IconButton,
   useScrollTrigger,
   Link,
   Typography,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import canopyTrees from '../../images/canopy-trees.svg'
 import { withStyles } from '@material-ui/styles';
+import canopyTrees from '../../images/canopy-trees.svg';
 import NavTabs from './nav-tabs';
 import styles from './styles';
 
@@ -34,7 +31,6 @@ ElevationScroll.propTypes = {
 
 const Navbar = (props) => {
   const { classes } = props;
-  const theme = useTheme();
   return (
     <ElevationScroll>
       <AppBar
@@ -42,12 +38,12 @@ const Navbar = (props) => {
         style={{ height: '100px', flexDirection: 'row' }}
       >
         <Toolbar
-          disableGutters={false}
-          style={{ width: '100%', backgroundColor: '#fff' }}
+          disableGutters
+          style={{ width: '100%', backgroundColor: '#fff', padding: '0 10px' }}
         >
           <img
             src={canopyTrees}
-            style={{ height: '60px', margin: '0 18px 0 16px' }}
+            style={{ height: '60px', margin: '0 18px 0 20px' }}
           />
           <Link
             component={NavLink}
