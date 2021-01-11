@@ -32,12 +32,12 @@ const Footer = (props) => {
       <List>
         {footerContent.listItems.map((listItem, index) => (
           <ListItem key={index} className={classes.text}>
-            <ListItemIcon
+            {/* <ListItemIcon
               className={classes.text}
               classes={{ root: classes.iconRoot }}
             >
               <StopIcon fontSize="small" />
-            </ListItemIcon>
+            </ListItemIcon> */}
             {listItem}
           </ListItem>
         ))}

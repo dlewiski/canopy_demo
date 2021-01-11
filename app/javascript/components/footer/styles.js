@@ -17,9 +17,9 @@ const styles = (theme) => ({
     fontSize: '16px',
     fontWeight: 500,
   },
-  iconRoot: {
-    minWidth: '30px',
-  },
+  // iconRoot: {
+  //   minWidth: '30px',
+  // },
 });
 
 export default styles;
