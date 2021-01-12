@@ -19,7 +19,7 @@ const App = () => (
         <Grid
           style={{
             minHeight: '65vh',
-            margin: '130px 0 30px',
+            margin: '100px 0 30px',
             display: 'flex',
             padding: '0 30px',
           }}
