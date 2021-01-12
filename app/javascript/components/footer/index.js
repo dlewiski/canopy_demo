@@ -4,7 +4,6 @@ import {
   Grid,
   List,
   ListItem,
-  ListItemIcon,
   // Link,
   Typography,
 } from '@material-ui/core';
