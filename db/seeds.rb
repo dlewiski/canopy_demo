@@ -11,7 +11,7 @@ products = Product.create([
     name: 'Solar ecoFund',
     total_dollars: '50m',
     shares: 10,
-    image_url: '',
+    image_url: '/images/products/solar-ecofund-product.png',
     co2_offset: '50 MT/year',
     irr: 6.52,
     management_fee: 1.5,
@@ -24,7 +24,7 @@ products = Product.create([
     name: 'Onshore Wind ecoFund',
     total_dollars: '65m',
     shares: 17,
-    image_url: '',
+    image_url: 'images/products/onshore-wind-ecofund-product.png',
     co2_offset: '45 MT/year',
     irr: 5.22,
     management_fee: 1.5,
@@ -37,7 +37,7 @@ products = Product.create([
     name: 'Solar ETF (SOLR)',
     total_dollars: '47m',
     shares: 11,
-    image_url: '',
+    image_url: '/images/products/solar-etf-product.jpg',
     co2_offset: '45 MT/year',
     irr: 7.18,
     management_fee: 1.5,
@@ -56,7 +56,7 @@ projects = Project.create([
     cod_date: '01/04/2014',
     irr: 5.6,
     operator: 'Sunwest, LLC',
-    image_url: '',
+    image_url: '/images/projects/heartland-project.png',
     product: products.first
   },
   {
@@ -66,7 +66,7 @@ projects = Project.create([
     cod_date: '03/14/2017',
     irr: 4.4,
     operator: 'SD&E, PG&E',
-    image_url: '',
+    image_url: '/images/projects/mojave-project.png',
     product: products.first
   },
   {
@@ -76,7 +76,7 @@ projects = Project.create([
     cod_date: '04/2021',
     irr: 8.8,
     operator: 'TBC',
-    image_url: '',
+    image_url: '/images/projects/phoenix-project.png',
     product: products.first
   }
 ])
