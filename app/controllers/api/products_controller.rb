@@ -6,7 +6,7 @@ module Api
     def index
       products = Product.all
 
-      render json: products
+      render json: ProductSerializer.new(products, options)
     end
 
     # /api/products/:id
@@ -16,6 +16,12 @@ module Api
       product = Product.find(params[:id])
 
       render json: product
+    end
+
+    private
+
+    def options
+      @options ||= { include: %i[projects] }
     end
   end
 end
