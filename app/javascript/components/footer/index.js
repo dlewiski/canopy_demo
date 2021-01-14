@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core';
 import StopIcon from '@material-ui/icons/Stop';
 import { withStyles } from '@material-ui/styles';
+import windEcofundImg from '../../images/database-images/products/onshore-wind-ecofund-product.png';
 import styles from './styles';
 
 const Footer = (props) => {
