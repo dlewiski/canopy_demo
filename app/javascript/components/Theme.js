@@ -34,4 +34,13 @@ export default createMuiTheme({
       fontWeight: 400,
     },
   },
+  breakpoints: {
+    values: {
+      xl: 1350,
+      lg: 1150,
+      md: 830,
+      sm: 600,
+      xs: 300,
+    },
+  },
 });
