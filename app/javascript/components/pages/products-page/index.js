@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Button, useTheme } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
+import styles from './styles';
 
-const ProductsPage = () => {
+const ProductsPage = (props) => {
+  const { classes } = props;
   const [products, setProducts] = useState([]);
+  const theme = useTheme();
 
   useEffect(() => {
     const getProducts = async () => {
@@ -17,16 +21,49 @@ const ProductsPage = () => {
     getProducts();
   }, []);
   return (
-    <Grid>
-      <Typography>Hello ProductsPage</Typography>
-      {products.map((product, index) => (
-        <Grid key={index} style={{ display: 'flex', margin: '40px 0' }}>
-          <Typography>{product.attributes.name}</Typography>
-          <img src={product.attributes.image_url} style={{ width: '350px' }} />
-        </Grid>
-      ))}
+    <Grid className={classes.productPageRoot}>
+      {products.length === 0 ? (
+        <Typography>
+          There was an error retrieving your products. Pleaset try again later.
+        </Typography>
+      ) : (
+        products.map((product, index) => (
+          <Grid key={index} className={classes.productContainer}>
+            <Grid className={classes.productButtonContainer}>
+              <Button
+                variant="contained"
+                className={classes.productButton}
+                style={{ backgroundColor: theme.palette.green.medium }}
+              >
+                Invest
+              </Button>
+              <Button
+                variant="contained"
+                className={classes.productButton}
+                style={{ backgroundColor: theme.palette.blue.medium }}
+              >
+                Sell
+              </Button>
+              <Button
+                variant="contained"
+                className={classes.productButton}
+                style={{ backgroundColor: theme.palette.grey[400] }}
+              >
+                Details
+              </Button>
+            </Grid>
+            <Typography className={classes.productTitle}>
+              {product.attributes.name}
+            </Typography>
+            <img
+              src={product.attributes.image_url}
+              className={classes.productImg}
+            />
+          </Grid>
+        ))
+      )}
     </Grid>
   );
 };
 
-export default ProductsPage;
+export default withStyles(styles)(ProductsPage);
