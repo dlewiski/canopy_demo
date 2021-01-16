@@ -17,7 +17,13 @@ const App = () => {
     <React.Fragment>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <Grid style={{ display: 'flex', flexDirection: 'column' }}>
+        <Grid
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100vh',
+          }}
+        >
           <Navbar
             showMobileNavMenu={showMobileNavMenu}
             setShowMobileNavMenu={setShowMobileNavMenu}
@@ -25,7 +31,7 @@ const App = () => {
           {!showMobileNavMenu && (
             <Grid
               style={{
-                minHeight: '65vh',
+                minHeight: 'cacl(100vh - 100px)',
                 margin: '100px 0 30px',
                 display: 'flex',
                 padding: '0 30px',

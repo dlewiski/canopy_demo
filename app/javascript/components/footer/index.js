@@ -23,7 +23,7 @@ const Footer = (props) => {
   ];
 
   const footerColumn = (footerContent) => (
-    <Grid key={footerContent.title}>
+    <Grid key={footerContent.title} className={classes.footerColumnRoot}>
       <Typography variant="h5" className={classes.listTitle}>
         {footerContent.title}
       </Typography>
