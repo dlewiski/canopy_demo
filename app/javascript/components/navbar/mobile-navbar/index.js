@@ -12,7 +12,7 @@ import { withStyles } from '@material-ui/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import canopyTrees from '../../../images/canopy-trees.svg';
-import MobileNavMenu from './mobile-nav-tabs';
+import MobileNavMenu from './mobile-nav-menu';
 import styles from './styles';
 
 function ElevationScroll(props) {

@@ -7,9 +7,7 @@ import {
   // Link,
   Typography,
 } from '@material-ui/core';
-import StopIcon from '@material-ui/icons/Stop';
 import { withStyles } from '@material-ui/styles';
-import windEcofundImg from '../../images/database-images/products/onshore-wind-ecofund-product.png';
 import styles from './styles';
 
 const Footer = (props) => {
@@ -32,12 +30,6 @@ const Footer = (props) => {
       <List>
         {footerContent.listItems.map((listItem, index) => (
           <ListItem key={index} className={classes.text}>
-            {/* <ListItemIcon
-              className={classes.text}
-              classes={{ root: classes.iconRoot }}
-            >
-              <StopIcon fontSize="small" />
-            </ListItemIcon> */}
             {listItem}
           </ListItem>
         ))}
