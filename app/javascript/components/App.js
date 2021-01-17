@@ -21,7 +21,6 @@ const App = () => {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            height: '100vh',
           }}
         >
           <Navbar
@@ -31,7 +30,7 @@ const App = () => {
           {!showMobileNavMenu && (
             <Grid
               style={{
-                minHeight: 'cacl(100vh - 100px)',
+                minHeight: 'calc(100vh - 540px)',
                 margin: '100px 0 30px',
                 display: 'flex',
                 padding: '0 30px',

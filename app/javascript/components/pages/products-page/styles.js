@@ -15,7 +15,7 @@ const styles = (theme) => ({
     gridTemplateRows: '1fr 1fr 1fr',
     gridArea: 'buttons',
     gridGap: '10px 0',
-    marginRight: '20px',
+    marginRight: '16px',
   },
   productButton: {
     color: '#fff',
@@ -58,7 +58,7 @@ const styles = (theme) => ({
     width: '100px',
   },
   productImg: {
-    width: '100px',
+    width: '90px',
     height: '75px',
     gridArea: 'image',
     justifySelf: 'flex-end',
