@@ -65,6 +65,7 @@ const styles = (theme) => ({
     height: '75px',
     gridArea: 'image',
     justifySelf: 'flex-end',
+    alignSelf: 'center',
   },
   costContainer: {
     gridArea: 'cost',
