@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Grid, Typography, Button, useTheme } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
-import carbonLifecylceBarGraph from '../../../images/product-page-images/carbon-lifecylce-bar-graph.png';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import carbonLifecylceBarGraph from '../../../images/product-page-images/carbon-lifecylce-bar-graph.png';
 import styles from './styles';
 
 const ProductsPage = (props) => {
