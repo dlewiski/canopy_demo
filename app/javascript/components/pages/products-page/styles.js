@@ -7,7 +7,7 @@ const styles = (theme) => ({
     display: 'grid',
     padding: '20px 0',
     gridTemplateAreas: `
-    'title title image image'
+    'title title . .'
     'score score image image'
     'cost percentFunded percentFunded percentFunded'
     'buttons buttons buttons buttons'`,
