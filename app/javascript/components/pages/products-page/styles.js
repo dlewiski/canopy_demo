@@ -5,17 +5,19 @@ const styles = (theme) => ({
   },
   productContainer: {
     display: 'grid',
-    padding: '15px 0',
-    gridTemplateAreas: `'buttons title image'
-    'buttons score image'`,
+    padding: '20px 0',
+    gridTemplateAreas: `
+    'title image'
+    'score image'
+    'buttons buttons'`,
     borderTop: `1px solid ${theme.palette.grey[300]}`,
   },
   productButtonContainer: {
     display: 'grid',
-    gridTemplateRows: '1fr 1fr 1fr',
+    gridTemplateColumns: '1fr 1fr 1fr',
     gridArea: 'buttons',
-    gridGap: '10px 0',
-    marginRight: '16px',
+    gridGap: '0 10px',
+    marginTop: '16px',
   },
   productButton: {
     color: '#fff',

@@ -58,7 +58,7 @@ const MobileNav = (props) => {
             >
               <img
                 src={canopyTrees}
-                style={{ height: '60px', margin: '0 18px 0 20px' }}
+                style={{ height: '60px', margin: '0 10px 0 20px' }}
               />
             </Link>
             <Link

@@ -14,10 +14,10 @@ const styles = (theme) => ({
     color: theme.palette.green.dark,
   },
   menuIcon: {
-    marginLeft: 'auto',
+    margin: '0 20px 0 10px',
     color: theme.palette.green.dark,
     height: '100%',
-    width: '65px',
+    width: '46px',
     '&:hover': {
       cursor: 'pointer',
     },
