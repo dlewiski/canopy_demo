@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Grid, Typography, Button, useTheme } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import carbonLifecylceBarGraph from '../../../images/product-page-images/carbon-lifecylce-bar-graph.png';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import styles from './styles';
 
 const ProductsPage = (props) => {
@@ -29,6 +30,15 @@ const ProductsPage = (props) => {
       source.cancel();
     };
   }, []);
+
+  const setProgressBarStyle = (percent) => {
+    const newStyle = {
+      opacity: 1,
+      width: `${percent}%`,
+    };
+    return newStyle;
+  };
+
   return (
     <Grid className={classes.productPageRoot}>
       {products.length === 0 ? (
@@ -91,6 +101,47 @@ const ProductsPage = (props) => {
               src={product.attributes.image_url}
               className={classes.productImg}
             />
+            <Grid className={classes.costContainer}>
+              <Typography className={classes.costText}>Cost basis</Typography>
+              <Typography className={classes.costPrice}>
+                $ {product.attributes.cost_basis}
+              </Typography>
+              <Typography className={classes.costText}>
+                As of close at 4pm ET
+              </Typography>
+            </Grid>
+            {product.attributes.percent_change > 0 ? (
+              <Grid className={classes.progressContainer}>
+                <Grid className={classes.progressBarOuter}>
+                  <Grid
+                    className={classes.progressBarInner}
+                    style={setProgressBarStyle(
+                      product.attributes.percent_change,
+                    )}
+                  >
+                    {product.attributes.percent_change}%
+                  </Grid>
+                </Grid>
+                <Typography className={classes.totalDollars}>
+                  ${product.attributes.total_dollars}
+                </Typography>
+              </Grid>
+            ) : (
+              <Grid className={classes.negativeReturnContainer}>
+                <PlayArrowIcon
+                  fontSize="large"
+                  className={classes.downTriangle}
+                />
+                <Typography className={classes.negativeReturnText}>
+                  {(
+                    product.attributes.percent_change *
+                    product.attributes.cost_basis *
+                    0.01
+                  ).toFixed(2)}{' '}
+                  ({product.attributes.percent_change}%)
+                </Typography>
+              </Grid>
+            )}
           </Grid>
         ))
       )}

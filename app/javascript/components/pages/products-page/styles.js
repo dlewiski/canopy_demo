@@ -7,9 +7,10 @@ const styles = (theme) => ({
     display: 'grid',
     padding: '20px 0',
     gridTemplateAreas: `
-    'title image'
-    'score image'
-    'buttons buttons'`,
+    'title title image image'
+    'score score image image'
+    'cost percentFunded percentFunded percentFunded'
+    'buttons buttons buttons buttons'`,
     borderTop: `1px solid ${theme.palette.grey[300]}`,
   },
   productButtonContainer: {
@@ -64,6 +65,51 @@ const styles = (theme) => ({
     height: '75px',
     gridArea: 'image',
     justifySelf: 'flex-end',
+  },
+  costContainer: {
+    gridArea: 'cost',
+    marginTop: '16px',
+  },
+  costText: {
+    fontSize: '10px',
+  },
+  costPrice: {
+    fontWeight: 700,
+  },
+  progressContainer: {
+    gridArea: 'percentFunded',
+    alignSelf: 'center',
+    display: 'flex',
+  },
+  progressBarOuter: {
+    height: '20px',
+    width: '150px',
+    backgroundColor: theme.palette.grey[300],
+    borderRadius: '10px',
+  },
+  progressBarInner: {
+    borderRadius: '10px',
+    textAlign: 'center',
+    color: '#fff',
+    width: 0,
+    backgroundColor: theme.palette.blue.dark,
+  },
+  totalDollars: {
+    fontSize: '12px',
+    marginLeft: '8px',
+  },
+  negativeReturnContainer: {
+    gridArea: 'percentFunded',
+    display: 'flex',
+    alignSelf: 'center',
+    alignItems: 'center',
+    color: theme.palette.error.dark,
+  },
+  downTriangle: {
+    transform: 'rotate(90deg)',
+  },
+  negativeReturnText: {
+    paddingTop: '4px',
   },
 });
 
