@@ -21,6 +21,7 @@ const App = () => {
           style={{
             display: 'flex',
             flexDirection: 'column',
+            minHeight: '100vh',
           }}
         >
           <Navbar
