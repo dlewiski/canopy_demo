@@ -112,6 +112,49 @@ const styles = (theme) => ({
   negativeReturnText: {
     paddingTop: '4px',
   },
+  [theme.breakpoints.up('md')]: {
+    productContainer: {
+      gridTemplateAreas: `
+      'buttons title . . image'
+      'buttons score cost percentFunded image'`,
+    },
+    productButtonContainer: {
+      gridTemplateRows: '1fr 1fr 1fr',
+      gridTemplateColumns: 'none',
+      gridGap: '15px 0',
+    },
+    productButton: {
+      height: '30px',
+      width: '75%',
+      justifySelf: 'center',
+      fontSize: '16px',
+    },
+    productTitle: {
+      fontSize: '24px',
+      width: '300px',
+    },
+    esgButton: {
+      height: '60px',
+      width: '60px',
+      lineHeight: 1.25,
+      padding: '4px',
+      fontSize: '16px',
+      margin: 'auto 8px auto 16px',
+    },
+    carbonLifecycleText: {
+      fontSize: '16px',
+    },
+    carbonLifecycleImg: {
+      width: '200px',
+    },
+    productImg: {
+      width: '275px',
+      height: '150px',
+    },
+    // negativeReturnContainer: {
+    //   width: '285px',
+    // },
+  },
 });
 
 export default styles;
