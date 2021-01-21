@@ -147,6 +147,9 @@ const styles = (theme) => ({
     carbonLifecycleImg: {
       width: '200px',
     },
+    negativeReturnContainer: {
+      minWidth: '188px',
+    },
     productImg: {
       width: '275px',
       height: '150px',
