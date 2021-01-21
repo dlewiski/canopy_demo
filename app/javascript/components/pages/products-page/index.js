@@ -61,7 +61,7 @@ const ProductsPage = (props) => {
                 className={classes.productButton}
                 style={{ backgroundColor: theme.palette.blue.medium }}
               >
-                Sell
+                Watchlist
               </Button>
               <Button
                 variant="contained"
