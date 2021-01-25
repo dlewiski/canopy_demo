@@ -6,6 +6,8 @@ import theme from './Theme';
 import Navbar from './navbar';
 import Homepage from './pages/homepage';
 import ProductsPage from './pages/products-page';
+import ProductDetailPage from './pages/products-page/product-detail-page';
+import ProductInvestPage from './pages/products-page/product-invest-page';
 import AccountPage from './pages/account-page';
 import MyPortfolioPage from './pages/my-portfolio-page';
 import Footer from './footer';
@@ -40,6 +42,16 @@ const App = () => {
               <Switch>
                 <Route exact path="/" component={Homepage} />
                 <Route exact path="/products" component={ProductsPage} />
+                <Route
+                  exact
+                  path="/products/detail/:name"
+                  component={ProductDetailPage}
+                />
+                <Route
+                  exact
+                  path="/products/invest/:name"
+                  component={ProductInvestPage}
+                />
                 <Route exact path="/account" component={AccountPage} />
                 <Route exact path="/my-portfolio" component={MyPortfolioPage} />
                 <Route path="*">

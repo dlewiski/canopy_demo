@@ -4,7 +4,7 @@ module Api
     # Return all products
     # GET
     def index
-      products = Product.all
+      products = Product.all.includes(:projects)
 
       render json: ProductSerializer.new(products, options)
     end

@@ -7,7 +7,9 @@ import carbonLifecylceBarGraph from '../../../images/product-page-images/carbon-
 import styles from './styles';
 
 const ProductsPage = (props) => {
-  const { classes } = props;
+  const { classes, history } = props;
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
   const theme = useTheme();
 
@@ -20,8 +22,10 @@ const ProductsPage = (props) => {
           cancelToken: source.token,
         });
         setProducts(productResponse.data.data);
-      } catch (error) {
-        console.log(error);
+        setIsLoading(false);
+      } catch (e) {
+        setError({ message: e.message });
+        setIsLoading(false);
       }
     };
     getProducts();
@@ -39,14 +43,32 @@ const ProductsPage = (props) => {
     return newStyle;
   };
 
-  return (
-    <Grid className={classes.productPageRoot}>
-      {products.length === 0 ? (
+  const handleDetailsButton = (event, productInfo) => {
+    history.push(`/products/detail/${productInfo.attributes.name}`);
+  };
+
+  if (isLoading) {
+    return (
+      <Grid className={classes.productPageRoot}>
+        <Typography>LOADING</Typography>
+      </Grid>
+    );
+  }
+
+  if (error) {
+    return (
+      <Grid className={classes.productPageRoot}>
         <Typography>
-          There was an error retrieving your products. Pleaset try again later.
+          There was an error retrieving your products. Please try again later.
         </Typography>
-      ) : (
-        products.map((product, index) => (
+      </Grid>
+    );
+  }
+
+  return (
+    products.length > 0 && (
+      <Grid className={classes.productPageRoot}>
+        {products.map((product, index) => (
           <Grid key={index} className={classes.productContainer}>
             <Grid className={classes.productButtonContainer}>
               <Button
@@ -67,6 +89,7 @@ const ProductsPage = (props) => {
                 variant="contained"
                 className={classes.productButton}
                 style={{ backgroundColor: theme.palette.grey[400] }}
+                onClick={(event) => handleDetailsButton(event, product)}
               >
                 Details
               </Button>
@@ -77,8 +100,12 @@ const ProductsPage = (props) => {
             <Grid className={classes.esgAndLifecycleContainer}>
               <Button
                 variant="contained"
+                disabled={true}
                 className={classes.esgButton}
-                style={{ backgroundColor: theme.palette.green.medium }}
+                style={{
+                  backgroundColor: theme.palette.green.medium,
+                  color: '#fff',
+                }}
               >
                 ESG
                 <br />
@@ -143,9 +170,9 @@ const ProductsPage = (props) => {
               </Grid>
             )}
           </Grid>
-        ))
-      )}
-    </Grid>
+        ))}
+      </Grid>
+    )
   );
 };
 
