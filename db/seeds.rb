@@ -22,7 +22,7 @@ products = Product.create([
   },
   {
     name: 'Onshore Wind ecoFund',
-    total_dollars: '65m',
+    total_dollars: '50m',
     shares: 17,
     image_url: 'images/products/onshore-wind-ecofund-product.png',
     co2_offset: '45 MT/year',

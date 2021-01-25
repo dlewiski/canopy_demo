@@ -4,16 +4,16 @@ module Api
     # Return all products
     # GET
     def index
-      products = Product.all
+      products = Product.all.includes(:projects)
 
-      render json: ProductSerializer.new(products, options)
+      render json: products
     end
 
-    # /api/products/:id
+    # /api/products/:slug
     # Return a product based upon id provided
     # GET
     def show 
-      product = Product.find(params[:id])
+      product = Product.find_by(params[:slug])
 
       render json: product
     end

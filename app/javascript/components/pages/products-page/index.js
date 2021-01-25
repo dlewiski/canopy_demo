@@ -7,7 +7,9 @@ import carbonLifecylceBarGraph from '../../../images/product-page-images/carbon-
 import styles from './styles';
 
 const ProductsPage = (props) => {
-  const { classes } = props;
+  const { classes, history } = props;
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
   const theme = useTheme();
 
@@ -19,9 +21,11 @@ const ProductsPage = (props) => {
         const productResponse = await axios.get('/api/products', {
           cancelToken: source.token,
         });
-        setProducts(productResponse.data.data);
-      } catch (error) {
-        console.log(error);
+        setProducts(productResponse.data);
+        setIsLoading(false);
+      } catch (e) {
+        setError({ message: e.message });
+        setIsLoading(false);
       }
     };
     getProducts();
@@ -39,14 +43,35 @@ const ProductsPage = (props) => {
     return newStyle;
   };
 
-  return (
-    <Grid className={classes.productPageRoot}>
-      {products.length === 0 ? (
+  const handleDetailsButton = (event, productInfo) => {
+    history.push({
+      pathname: `/products/detail/${productInfo.slug}`,
+      state: { productInfo },
+    });
+  };
+
+  if (isLoading) {
+    return (
+      <Grid className={classes.productPageRoot}>
+        <Typography>LOADING</Typography>
+      </Grid>
+    );
+  }
+
+  if (error) {
+    return (
+      <Grid className={classes.productPageRoot}>
         <Typography>
-          There was an error retrieving your products. Pleaset try again later.
+          There was an error retrieving your products. Please try again later.
         </Typography>
-      ) : (
-        products.map((product, index) => (
+      </Grid>
+    );
+  }
+
+  return (
+    products.length > 0 && (
+      <Grid className={classes.productPageRoot}>
+        {products.map((product, index) => (
           <Grid key={index} className={classes.productContainer}>
             <Grid className={classes.productButtonContainer}>
               <Button
@@ -61,24 +86,29 @@ const ProductsPage = (props) => {
                 className={classes.productButton}
                 style={{ backgroundColor: theme.palette.blue.medium }}
               >
-                Sell
+                Watchlist
               </Button>
               <Button
                 variant="contained"
                 className={classes.productButton}
                 style={{ backgroundColor: theme.palette.grey[400] }}
+                onClick={(event) => handleDetailsButton(event, product)}
               >
                 Details
               </Button>
             </Grid>
             <Typography className={classes.productTitle}>
-              {product.attributes.name}
+              {product.name}
             </Typography>
             <Grid className={classes.esgAndLifecycleContainer}>
               <Button
                 variant="contained"
+                disabled={true}
                 className={classes.esgButton}
-                style={{ backgroundColor: theme.palette.green.medium }}
+                style={{
+                  backgroundColor: theme.palette.green.medium,
+                  color: '#fff',
+                }}
               >
                 ESG
                 <br />
@@ -97,33 +127,28 @@ const ProductsPage = (props) => {
                 className={classes.carbonLifecycleImg}
               />
             </Grid>
-            <img
-              src={product.attributes.image_url}
-              className={classes.productImg}
-            />
+            <img src={product.image_url} className={classes.productImg} />
             <Grid className={classes.costContainer}>
               <Typography className={classes.costText}>Cost basis</Typography>
               <Typography className={classes.costPrice}>
-                $ {product.attributes.cost_basis}
+                $ {product.cost_basis}
               </Typography>
               <Typography className={classes.costText}>
                 As of close at 4pm ET
               </Typography>
             </Grid>
-            {product.attributes.percent_change > 0 ? (
+            {product.percent_change > 0 ? (
               <Grid className={classes.progressContainer}>
                 <Grid className={classes.progressBarOuter}>
                   <Grid
                     className={classes.progressBarInner}
-                    style={setProgressBarStyle(
-                      product.attributes.percent_change,
-                    )}
+                    style={setProgressBarStyle(product.percent_change)}
                   >
-                    {product.attributes.percent_change}%
+                    {product.percent_change}%
                   </Grid>
                 </Grid>
                 <Typography className={classes.totalDollars}>
-                  ${product.attributes.total_dollars}
+                  ${product.total_dollars}
                 </Typography>
               </Grid>
             ) : (
@@ -133,19 +158,17 @@ const ProductsPage = (props) => {
                   className={classes.downTriangle}
                 />
                 <Typography className={classes.negativeReturnText}>
-                  {(
-                    product.attributes.percent_change *
-                    product.attributes.cost_basis *
-                    0.01
-                  ).toFixed(2)}{' '}
-                  ({product.attributes.percent_change}%)
+                  {(product.percent_change * product.cost_basis * 0.01).toFixed(
+                    2,
+                  )}{' '}
+                  ({product.percent_change}%)
                 </Typography>
               </Grid>
             )}
           </Grid>
-        ))
-      )}
-    </Grid>
+        ))}
+      </Grid>
+    )
   );
 };
 

@@ -47,6 +47,8 @@ const MobileNav = (props) => {
               width: '100%',
               backgroundColor: '#fff',
               padding: '0 10px',
+              display: 'flex',
+              justifyContent: 'space-between',
             }}
           >
             <Link
