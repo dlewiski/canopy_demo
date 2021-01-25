@@ -44,7 +44,10 @@ const ProductsPage = (props) => {
   };
 
   const handleDetailsButton = (event, productInfo) => {
-    history.push(`/products/detail/${productInfo.slug}`);
+    history.push({
+      pathname: `/products/detail/${productInfo.slug}`,
+      state: { productInfo },
+    });
   };
 
   if (isLoading) {
