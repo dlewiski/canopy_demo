@@ -7,7 +7,7 @@ const styles = (theme) => ({
     display: 'grid',
     padding: '20px 0',
     gridTemplateAreas: `
-    'title title . .'
+    'title title title title'
     'score score image image'
     'cost percentFunded percentFunded percentFunded'
     'buttons buttons buttons buttons'`,
@@ -26,10 +26,15 @@ const styles = (theme) => ({
     textTransform: 'none',
     borderRadius: '10px',
   },
-  productTitle: {
+  titleAndValueContainer: {
     gridArea: 'title',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  productTitle: {
     fontWeight: 500,
-    width: '200px',
+    // width: '200px',
+    whiteSpace: 'nowrap',
   },
   esgAndLifecycleContainer: {
     gridArea: 'score',
@@ -93,7 +98,7 @@ const styles = (theme) => ({
     textAlign: 'center',
     color: '#fff',
     width: 0,
-    backgroundColor: theme.palette.blue.dark,
+    backgroundColor: theme.palette.orange.medium,
   },
   totalDollars: {
     fontSize: '12px',

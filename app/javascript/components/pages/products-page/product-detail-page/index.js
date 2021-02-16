@@ -68,7 +68,7 @@ const ProductDetailPage = (props) => {
           ))}
         </List>
       </Grid>
-      <Link component={RouterLink} to="/products">
+      <Link component={RouterLink} to="/products" underline="none">
         <Button variant="contained" className={classes.backButton}>
           Back to Products
         </Button>

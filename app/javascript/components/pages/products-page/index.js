@@ -58,7 +58,7 @@ const ProductsPage = (props) => {
     );
   }
 
-  if (error) {
+  if (error || products.length === 0) {
     return (
       <Grid className={classes.productPageRoot}>
         <Typography>
@@ -97,9 +97,23 @@ const ProductsPage = (props) => {
                 Details
               </Button>
             </Grid>
-            <Typography className={classes.productTitle}>
-              {product.name}
-            </Typography>
+            <Grid className={classes.titleAndValueContainer}>
+              <Typography className={classes.productTitle}>
+                {product.name}
+              </Typography>
+              <Typography className={classes.productShares}>
+                Shares: {product.shares}
+              </Typography>
+              <Typography className={classes.productValue}>
+                Value: ${' '}
+                {(product.value / 100)
+                  .toFixed(2)
+                  .toString()
+                  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+                {/* add comma to the correct place using regex, found here
+                https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript */}
+              </Typography>
+            </Grid>
             <Grid className={classes.esgAndLifecycleContainer}>
               <Button
                 variant="contained"
