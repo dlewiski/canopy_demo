@@ -107,7 +107,7 @@ projects = Project.create([
     product: products.first
   },
   {
-    location: 'Portlan, OR',
+    location: 'Portland, OR',
     energy_amount: 100,
     units: 'MW',
     cod_date: '04/2021',
