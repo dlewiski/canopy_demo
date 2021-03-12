@@ -8,7 +8,7 @@ const MobileNavMenu = (props) => {
   const { classes, closeMenu } = props;
   const tabs = [
     { name: 'Products', path: '/products' },
-    { name: 'My Portfolio', path: '/my-portfolio' },
+    // { name: 'My Portfolio', path: '/my-portfolio' },
     { name: 'Account', path: '/account' },
   ];
 

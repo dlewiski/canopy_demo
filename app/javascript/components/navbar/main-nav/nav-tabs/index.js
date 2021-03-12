@@ -8,7 +8,7 @@ const NavTabs = (props) => {
   const { classes } = props;
   const tabs = [
     { name: 'Products', path: '/products' },
-    { name: 'My Portfolio', path: '/my-portfolio' },
+    // { name: 'My Portfolio', path: '/my-portfolio' },
     { name: 'Account', path: '/account' },
   ];
 
